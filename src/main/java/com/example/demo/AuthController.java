@@ -1,6 +1,7 @@
 package com.example.demo;
 
 import org.springframework.web.bind.annotation.RestController;
+
 //make a user
 @RestController
 public class AuthController {

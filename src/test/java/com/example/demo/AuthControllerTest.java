@@ -16,14 +16,18 @@ import static org.mockito.Mockito.when;
 @SpringBootTest
 public class AuthControllerTest {
 
-    //@Autowired makes the life easier and the springboot will take care of it
+    //ctrl + p = implMeth --alt + insert = make --ctrl + alt + L = Formatting
 
-    @Autowired AuthController authController;
+    //@Autowired makes the life easier and the springboot will take care of it
+    @Autowired
+    AuthController authController;
 
     //This makes to think like AuthService, but it is empty and not the real AuthService
-    @MockBean AuthService authService;
+    @MockBean
+    AuthService authService;
 
     String testToken;
+
     @BeforeEach
     void setUp() {
         testToken = UUID.randomUUID().toString();
@@ -32,10 +36,12 @@ public class AuthControllerTest {
     //with auth and login get me a token, get login in AuthController alt+enter
     //isolate this, because the mockBean is used
     @Test
-    void name() {
+    void test_login_success() {
+        //Given -- get this
         when(authService.login(anyString(), anyString())).thenReturn(testToken);
-        String token = authController.login("Arne","Looser");
-        //implementer ass
+        //When -- do this
+        String token = authController.login("Arne", "Looser");
+        //implementer assertE --> then -- expect this
         assertEquals(testToken, token);
     }
 }
